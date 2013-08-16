@@ -1,0 +1,12 @@
+;; -*- scheme -*-
+
+(define csc-flags
+  '(-d1 -O3))
+
+(compile ,@csc-flags -J -s awful-path-matchers.scm)
+(compile ,@csc-flags -s awful-path-matchers.import.scm)
+
+(install-extension
+ 'awful-path-matchers
+ '("awful-path-matchers.so" "awful-path-matchers.import.so")
+ '((version "0.0.1")))

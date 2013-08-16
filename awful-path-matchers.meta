@@ -1,0 +1,6 @@
+;; -*- scheme -*-
+((synopsis "Path matchers for awful")
+ (author "Mario Domenech Goulart")
+ (category web)
+ (license "BSD")
+ (test-depends server-test awful http-client))
