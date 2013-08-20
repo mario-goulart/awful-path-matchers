@@ -13,3 +13,8 @@
 (test "2" (get "/foo/2"))
 
 (test "6" (get "/foo/2/3"))
+
+(test "1" (get "/alist-ref/a"))
+(test "2" (get "/alist-ref/b"))
+(test "3" (get "/alist-ref/c"))
+(test "no match" (get "/alist-ref/d"))

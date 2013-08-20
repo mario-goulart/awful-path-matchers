@@ -11,3 +11,10 @@
 (define-page (path-match "foo" <int> <int>)
   (lambda (a b)
     (* a b)))
+
+(define-page (path-match "alist-ref" string->symbol)
+  (lambda (key)
+    (or (alist-ref key '((a . 1)
+                         (b . 2)
+                         (c . 3)))
+        "no match")))
