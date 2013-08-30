@@ -4,6 +4,7 @@
 
 (enable-sxml #t)
 
+;;; <int>
 (define-page (path-match "foo" <int>)
   (lambda (n)
     n))
@@ -12,6 +13,7 @@
   (lambda (a b)
     (* a b)))
 
+;;; alist-ref
 (define-page (path-match "alist-ref" string->symbol)
   (lambda (key)
     (or (alist-ref key '((a . 1)
@@ -19,6 +21,7 @@
                          (c . 3)))
         "no match")))
 
+;;; <string>
 (define-page (path-match "string" <string>)
   (lambda (s)
     s))
