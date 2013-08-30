@@ -18,3 +18,11 @@
                          (b . 2)
                          (c . 3)))
         "no match")))
+
+(define-page (path-match "string" <string>)
+  (lambda (s)
+    s))
+
+(define-page (path-match "string-and-int" <string> <int>)
+  (lambda (s n)
+    (conc s "-" n)))

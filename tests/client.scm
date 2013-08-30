@@ -18,3 +18,6 @@
 (test "2" (get "/alist-ref/b"))
 (test "3" (get "/alist-ref/c"))
 (test "no match" (get "/alist-ref/d"))
+
+(test "foo" (get "/string/foo"))
+(test "foo-42" (get "/string-and-int/foo/42"))
