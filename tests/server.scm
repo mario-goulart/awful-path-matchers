@@ -34,3 +34,8 @@
 (define-page (path-match "number" <number>)
   (lambda (n)
     (+ 1 n)))
+
+;;; sanitize-matchers
+(define-page (path-match "/" "sane" <int>)
+  (lambda (n)
+    n))

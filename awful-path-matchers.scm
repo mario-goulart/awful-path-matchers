@@ -13,9 +13,19 @@
 
 (define <string> identity)
 
+(define (sanitize-matchers matchers)
+  (if (null? matchers)
+      '()
+      ;; Ignore leading / in matchers specification, since
+      ;; string-split will remove it
+      (if (member (car matchers) '("/" /))
+          (cdr matchers)
+          matchers)))
+
 (define (path-match . matchers)
   (lambda (path)
-    (let ((path-parts (string-split path "/")))
+    (let ((path-parts (string-split path "/"))
+          (matchers (sanitize-matchers matchers)))
       (and (= (length path-parts)
               (length matchers))
            (let loop ((matchers matchers)

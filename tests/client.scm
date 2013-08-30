@@ -36,4 +36,8 @@
 (test "43.0" (get "/number/42.0"))
 (test-end "<number>")
 
+(test-begin "sanitize-matchers")
+(test "42" (get "/sane/42"))
+(test-end "sanitize-matchers")
+
 (test-end "awful-path-matchers")
