@@ -15,6 +15,9 @@
 (test-begin "<int>")
 (test "2" (get "/foo/2"))
 (test "6" (get "/foo/2/3"))
+(test 'ok (handle-exceptions exn
+            'ok
+            (get "/foo/2.0")))
 (test-end "<int>")
 
 (test-begin "alist-ref")

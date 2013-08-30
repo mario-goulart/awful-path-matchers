@@ -6,7 +6,7 @@
 
 (define (<int> thing)
   (let ((n (string->number thing)))
-    (and n (integer? n) n)))
+    (and n (exact? n) n)))
 
 (define <string> identity)
 
