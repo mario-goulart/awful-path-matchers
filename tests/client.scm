@@ -55,4 +55,15 @@
 
 (test-end "combinators")
 
+(test-begin "exactly")
+(test "specific-42" (get "/exactly/specific/42"))
+(test "84" (get "/exactly-42-string/42/42"))
+(test "84" (get "/exactly-42/42/42"))
+(test "43" (get "/42-or-43/42/1"))
+(test "44" (get "/42-or-43/43/1"))
+(test 'ok (handle-exceptions exn
+            'ok
+            (get "/42-or-43/44/1")))
+(test-end "exactly")
+
 (test-end "awful-path-matchers")

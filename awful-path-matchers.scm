@@ -1,5 +1,5 @@
 (module awful-path-matchers
-  (path-match <int> <string> <number> combine-and combine-or)
+  (path-match <int> <string> <number> combine-and combine-or exactly)
 
 (import chicken scheme)
 (use data-structures)
@@ -34,6 +34,16 @@
             (if res
                 res
                 (loop (cdr procs) #f)))))))
+
+(define (exactly this #!key test (convert identity))
+  (lambda (thing)
+    (cond ((number? this)
+           (let ((test (or test =))
+                 (nthing (string->number thing)))
+             (and nthing (test this nthing) (convert nthing))))
+          (else
+           (let ((test (or test equal?)))
+             (and (test thing this) (convert thing)))))))
 
 (define (sanitize-matchers matchers)
   (if (null? matchers)

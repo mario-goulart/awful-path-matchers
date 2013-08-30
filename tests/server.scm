@@ -54,3 +54,20 @@
 (define-page (path-match "combine-or" (combine-or <foo> <bar>) <number>)
   (lambda (fb n)
     (conc fb "-" n)))
+
+;;; exactly
+(define-page (path-match "exactly" (exactly "specific") <number>)
+  (lambda (specific n)
+    (conc specific "-" n)))
+
+(define-page (path-match "exactly-42-string" (exactly "42" convert: string->number) <number>)
+  (lambda (forty-two n)
+    (+ forty-two n)))
+
+(define-page (path-match "exactly-42" (exactly 42) <number>)
+  (lambda (forty-two n)
+    (+ forty-two n)))
+
+(define-page (path-match "42-or-43" (combine-or (exactly 42) (exactly 43)) <number>)
+  (lambda (n1 n2)
+    (+ n1 n2)))
