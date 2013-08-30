@@ -40,4 +40,19 @@
 (test "42" (get "/sane/42"))
 (test-end "sanitize-matchers")
 
+(test-begin "combinators")
+(test "43.0" (get "/combine-and/42/1.0"))
+(test 'ok (handle-exceptions exn
+            'ok
+            (get "/combine-and/42.0/1")))
+
+(test "foo-42" (get "/combine-or/foo/42"))
+(test "bar-42" (get "/combine-or/bar/42"))
+
+(test 'ok (handle-exceptions exn
+            'ok
+            (get "/combine-or/baz/42")))
+
+(test-end "combinators")
+
 (test-end "awful-path-matchers")

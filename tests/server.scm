@@ -39,3 +39,18 @@
 (define-page (path-match "/" "sane" <int>)
   (lambda (n)
     n))
+
+;;; Combinators
+(define-page (path-match "combine-and" (combine-and <number> <int>) <number>)
+  (lambda (n1 n2)
+    (+ n1 n2)))
+
+(define (<foo> thing)
+  (and (equal? thing "foo") "foo"))
+
+(define (<bar> thing)
+  (and (equal? thing "bar") "bar"))
+
+(define-page (path-match "combine-or" (combine-or <foo> <bar>) <number>)
+  (lambda (fb n)
+    (conc fb "-" n)))
