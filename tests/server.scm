@@ -29,3 +29,8 @@
 (define-page (path-match "string-and-int" <string> <int>)
   (lambda (s n)
     (conc s "-" n)))
+
+;;; <number>
+(define-page (path-match "number" <number>)
+  (lambda (n)
+    (+ 1 n)))

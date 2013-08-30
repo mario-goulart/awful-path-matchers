@@ -32,4 +32,8 @@
 (test "foo-42" (get "/string-and-int/foo/42"))
 (test-end "<string>")
 
+(test-begin "<number>")
+(test "43.0" (get "/number/42.0"))
+(test-end "<number>")
+
 (test-end "awful-path-matchers")

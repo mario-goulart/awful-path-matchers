@@ -1,5 +1,5 @@
 (module awful-path-matchers
-  (path-match <int> <string>)
+  (path-match <int> <string> <number>)
 
 (import chicken scheme)
 (use data-structures)
@@ -7,6 +7,9 @@
 (define (<int> thing)
   (let ((n (string->number thing)))
     (and n (exact? n) n)))
+
+(define (<number> thing)
+  (string->number thing))
 
 (define <string> identity)
 
