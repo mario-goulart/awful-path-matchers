@@ -53,6 +53,13 @@
             'ok
             (get "/combine-or/baz/42")))
 
+(test "42-42" (get "/combine-or-multiple-types/42/42"))
+(test "xxx-42" (get "/combine-or-multiple-types/xxx/42"))
+(test "foo-42" (get "/combine-or-multiple-types/foo/42"))
+(test 'ok (handle-exceptions exn
+            'ok
+            (get "/combine-or-multiple-types/baz/42")))
+
 (test-end "combinators")
 
 (test-begin "exactly")

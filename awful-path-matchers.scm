@@ -24,16 +24,24 @@
                 (loop (cdr procs) res)
                 #f))))))
 
-(define (combine-or . procs)
+(define (combine-or . objs)
   (lambda (thing)
-    (let loop ((procs procs)
-               (result #f))
-      (if (null? procs)
-          result
-          (let ((res ((car procs) thing)))
-            (if res
-                res
-                (loop (cdr procs) #f)))))))
+    (let loop ((objs objs))
+      (if (null? objs)
+          #f
+          (let ((obj (car objs)))
+            (cond ((procedure? obj)
+                   (let ((res (obj thing)))
+                     (if res
+                         res
+                         (loop (cdr objs)))))
+                  ((number? obj)
+                   (let ((n (string->number thing)))
+                     (or (and n (= n obj) n)
+                         (loop (cdr objs)))))
+                  (else
+                   (or (and (equal? obj thing) obj)
+                       (loop (cdr objs))))))))))
 
 (define (exactly this #!key test (convert identity))
   (lambda (thing)

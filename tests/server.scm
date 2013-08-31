@@ -55,6 +55,10 @@
   (lambda (fb n)
     (conc fb "-" n)))
 
+(define-page (path-match "combine-or-multiple-types" (combine-or 42 "xxx" <foo>) <number>)
+  (lambda (x n)
+    (conc x "-" n)))
+
 ;;; exactly
 (define-page (path-match "exactly" (exactly "specific") <number>)
   (lambda (specific n)
