@@ -1,8 +1,8 @@
 (module awful-path-matchers
-  (path-match <int> <string> <number> combine-and combine-or exactly)
+  (path-match <int> <string> <number> <regex> combine-and combine-or exactly)
 
 (import chicken scheme)
-(use data-structures)
+(use data-structures irregex)
 
 (define (<int> thing)
   (let ((n (string->number thing)))
@@ -12,6 +12,10 @@
   (string->number thing))
 
 (define <string> identity)
+
+(define (<regex> regex)
+  (lambda (thing)
+    (irregex-match regex thing)))
 
 (define (combine-and . procs)
   (lambda (thing)

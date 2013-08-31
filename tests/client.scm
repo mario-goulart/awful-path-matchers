@@ -36,6 +36,13 @@
 (test "43.0" (get "/number/42.0"))
 (test-end "<number>")
 
+(test-begin "<regex>")
+(test "abc4" (get "/regex/abc4"))
+(test 'ok (handle-exceptions exn
+            'ok
+            (get "/regex/abc4w")))
+(test-end "<regex>")
+
 (test-begin "sanitize-matchers")
 (test "42" (get "/sane/42"))
 (test-end "sanitize-matchers")

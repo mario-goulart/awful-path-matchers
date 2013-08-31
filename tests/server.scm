@@ -1,3 +1,4 @@
+(use irregex)
 (use awful awful-path-matchers)
 
 (page-template (lambda (content . args) content))
@@ -34,6 +35,11 @@
 (define-page (path-match "number" <number>)
   (lambda (n)
     (+ 1 n)))
+
+;;; <regex>
+(define-page (path-match "regex" (<regex> "abc[0-9]"))
+  (lambda (m)
+    (irregex-match-substring m 0)))
 
 ;;; sanitize-matchers
 (define-page (path-match "/" "sane" <int>)
