@@ -3,4 +3,4 @@
  (author "Mario Domenech Goulart")
  (category web)
  (license "BSD")
- (test-depends server-test awful http-client))
+ (test-depends server-test awful http-client test))
