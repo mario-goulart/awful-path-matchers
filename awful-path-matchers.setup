@@ -1,7 +1,9 @@
 ;; -*- scheme -*-
 
 (define csc-flags
-  '(-d1 -O3))
+  (if (get-environment-variable "SALMONELLA_RUNNING")
+      '(-d0 -O3)
+      '(-d1 -O3)))
 
 (compile ,@csc-flags -J -s awful-path-matchers.scm)
 (compile ,@csc-flags -s awful-path-matchers.import.scm)
