@@ -8,4 +8,4 @@
 (install-extension
  'awful-path-matchers
  '("awful-path-matchers.so" "awful-path-matchers.import.so")
- '((version "0.0.1")))
+ '((version "0.0.2")))
