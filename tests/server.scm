@@ -1,5 +1,15 @@
-(use irregex)
-(use awful awful-path-matchers)
+(import scheme)
+(cond-expand
+  (chicken-4
+   (use irregex)
+   (use awful awful-path-matchers))
+  (chicken-5
+   (import (chicken base)
+           (chicken irregex)
+           (chicken string))
+   (import awful awful-path-matchers))
+  (else
+   (error "Unsupported CHICKEN version.")))
 
 (page-template (lambda (content . args) content))
 

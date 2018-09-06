@@ -1,8 +1,17 @@
 (module awful-path-matchers
   (path-match <int> <string> <number> <regex> combine-and combine-or exactly)
 
-(import chicken scheme)
-(use data-structures irregex)
+(import scheme)
+(cond-expand
+  (chicken-4
+   (import chicken)
+   (use data-structures irregex))
+  (chicken-5
+   (import (chicken base)
+           (chicken irregex)
+           (chicken string)))
+  (else
+   (error "Unsupported CHICKEN version.")))
 
 (define (<int> thing)
   (let ((n (string->number thing)))

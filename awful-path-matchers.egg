@@ -1,0 +1,11 @@
+;;; awful-path-matchers.egg -*- scheme -*-
+
+((synopsis "Path matchers for awful")
+ (author "Mario Domenech Goulart")
+ (license "BSD")
+ (category web)
+ (test-dependencies awful http-client server-test test)
+ (component-options
+  (csc-options "-O3" "-d1"))
+ (components
+  (extension awful-path-matchers)))

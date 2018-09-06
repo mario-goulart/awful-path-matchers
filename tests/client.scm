@@ -1,4 +1,15 @@
-(use test http-client posix awful)
+(import scheme)
+(cond-expand
+  (chicken-4
+   (use test http-client posix awful))
+  (chicken-5
+   (import (chicken format)
+           (chicken io)
+           (chicken pathname))
+   (import awful http-client test)
+   (define close-all-connections! close-idle-connections!))
+  (else
+   (error "Unsupported CHICKEN version.")))
 
 (define server-uri (sprintf "http://localhost:~a" (server-port)))
 
