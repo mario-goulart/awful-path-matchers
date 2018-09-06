@@ -1,0 +1,7 @@
+awful-path-matchers.build.sh
+awful-path-matchers.import.scm
+awful-path-matchers.import.so
+awful-path-matchers.install.sh
+awful-path-matchers.link
+awful-path-matchers.so
+awful-path-matchers.static.o
